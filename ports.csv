@@ -1,0 +1,3 @@
+Open Ports,Vulnerabilities
+80,"HTTP-XSS,SQLi"
+443,HTTPS-TLS downgrade
