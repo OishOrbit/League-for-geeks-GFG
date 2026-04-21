@@ -105,3 +105,122 @@ The script reads captured network traffic and evaluates packets based on source 
 ## Summary
 
 This project provides a clear and practical implementation of a rule-based intrusion detection system using packet analysis. While simple, it effectively demonstrates how monitoring network behavior can help identify potential security threats.
+
+ps2.py->
+# Multithreaded Port Scanner with Basic Vulnerability Detection
+
+## Overview
+
+This project is a **multithreaded port scanning tool** that takes a domain name as input, resolves it to an IP address, and scans all possible TCP ports to identify open services. It also performs **basic vulnerability mapping** by associating commonly known security risks with specific open ports.
+
+The system is designed to provide a quick overview of exposed services on a target machine and highlight potential security concerns.
+
+---
+
+## Objective
+
+The main goals of this project are:
+
+* Resolve a domain name into its corresponding IP address
+* Identify open ports on the target system
+* Map open ports to commonly associated vulnerabilities
+* Generate structured output for analysis
+
+---
+
+## What It Does
+
+### 1. Domain Resolution
+
+* Accepts a domain name as input
+* Uses DNS resolution to convert it into a valid IP address
+
+### 2. Port Scanning
+
+* Scans all TCP ports in the range **1 to 65535**
+* Uses socket connections to check if a port is open
+* Implements **multithreading** to speed up the scanning process
+
+### 3. Open Port Detection
+
+* Identifies ports that accept connections
+* Stores and displays all open ports
+
+### 4. Basic Vulnerability Detection
+
+* Matches open ports with a predefined list of known vulnerabilities
+* Examples include:
+
+  * FTP → Brute force, sniffing
+  * SSH → Brute force
+  * HTTP → XSS, SQL Injection
+  * SMB → Ransomware risks
+  * RDP → Brute force attacks
+
+### 5. Result Logging
+
+* Exports results to a CSV file (`ports.csv`)
+* Each entry includes:
+
+  * Open port number
+  * Associated vulnerability (if known)
+
+---
+
+## Why This Project Matters
+
+* Demonstrates how exposed network services can become **attack entry points**
+* Highlights the importance of **port security and service hardening**
+* Provides a basic understanding of **network reconnaissance techniques**
+* Useful for educational purposes and introductory cybersecurity practice
+
+---
+
+## Key Features
+
+* Full port range scanning (1–65535)
+* Multithreaded execution for improved performance
+* Real-time console alerts for open ports and vulnerabilities
+* CSV-based reporting for easy analysis
+* Simple and extensible vulnerability mapping
+
+---
+
+## Prerequisites
+
+* Python 3.x
+* Required libraries:
+
+  * `socket` (for network communication)
+  * `threading` (for concurrent scanning)
+  * `csv` (for exporting results)
+
+---
+
+## Limitations
+
+* **No Service Verification**: Assumes vulnerabilities based only on port numbers, not actual service detection
+* **High Resource Usage**: Creating a thread per port can consume significant system resources
+* **Timeout Dependency**: Fixed timeout may lead to missed open ports or slower scans
+* **No Banner Grabbing**: Does not retrieve service information for deeper analysis
+* **False Positives**: Open port does not always imply vulnerability
+* **No Rate Limiting**: May overwhelm the network or trigger security defenses
+* **Legal/Ethical Concerns**: Scanning systems without permission may violate policies or laws
+
+---
+
+## Possible Enhancements
+
+* Implement thread pooling instead of one thread per port
+* Add banner grabbing for accurate service identification
+* Introduce OS and service fingerprinting
+* Include UDP port scanning
+* Add configurable scan ranges and timeout settings
+* Integrate real vulnerability databases (e.g., CVE mapping)
+* Build a GUI or dashboard for visualization
+
+---
+
+## Summary
+
+This project provides a practical implementation of a **basic port scanner combined with vulnerability awareness**. While it uses simplified assumptions, it effectively demonstrates how attackers and security analysts identify exposed services and assess potential risks in a network.
